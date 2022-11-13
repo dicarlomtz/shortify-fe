@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import ShortifyApp from './ShortifyApp'
+import { ShortifyApp } from './ShortifyApp'
 import ReactDOM from 'react-dom/client'
 import React from 'react'
 

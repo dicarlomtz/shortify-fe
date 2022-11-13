@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
-import ShortenerPage from '../app'
+import { ShortenerPage } from '../app'
 
-const AppRouter = () => {
+export const AppRouter = () => {
   return (
     <Routes>
         <Route path='/' element={<ShortenerPage />} />
@@ -10,5 +10,3 @@ const AppRouter = () => {
     </Routes>
   )
 }
-
-export default AppRouter

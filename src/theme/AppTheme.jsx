@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { purpleTheme } from './purple'
 
-const AppTheme = ({ children }) => {
+export const AppTheme = ({ children }) => {
   return (
     <ThemeProvider theme={ purpleTheme }>
         <CssBaseline />
@@ -16,5 +16,3 @@ const AppTheme = ({ children }) => {
 AppTheme.propTypes = {
   children: PropTypes.element.isRequired
 }
-
-export default AppTheme

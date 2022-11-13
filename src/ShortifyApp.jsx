@@ -1,5 +1,5 @@
-import AppRouter from './router'
-import AppTheme from './theme'
+import { AppRouter } from './router/AppRouter'
+import { AppTheme } from './theme'
 
 export const ShortifyApp = () => {
   return (
@@ -8,5 +8,3 @@ export const ShortifyApp = () => {
     </AppTheme>
   )
 }
-
-export default ShortifyApp
