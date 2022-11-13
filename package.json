@@ -9,8 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.6",
@@ -18,10 +16,13 @@
     "axios": "^1.0.0",
     "formik": "^2.2.9",
     "prop-types": "^15.8.1",
-    "yup": "^0.32.11",
-    "react-router-dom": "^6.4.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
