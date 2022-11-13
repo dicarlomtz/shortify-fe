@@ -1,6 +1,6 @@
-import MenuBookIcon from '@mui/icons-material/MenuBook'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import LinkIcon from '@mui/icons-material/Link'
 import Toolbar from '@mui/material/Toolbar'
 import AppBar from '@mui/material/AppBar'
 import {
@@ -15,7 +15,7 @@ export const Navbar = () => {
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
 
-          <MenuBookIcon sx={ brandIconStyles } />
+          <LinkIcon sx={ brandIconStyles } />
           <Typography
             variant='h6'
             noWrap

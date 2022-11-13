@@ -1,5 +1,5 @@
-import MenuBookIcon from '@mui/icons-material/MenuBook'
 import Typography from '@mui/material/Typography'
+import LinkIcon from '@mui/icons-material/Link'
 
 import {
   brandNameStylesSm,
@@ -9,7 +9,7 @@ import {
 export const Toggler = () => {
   return (
       <>
-        <MenuBookIcon sx={ brandStylesSm } />
+        <LinkIcon sx={ brandStylesSm } />
         <Typography
             variant='h5'
             noWrap
