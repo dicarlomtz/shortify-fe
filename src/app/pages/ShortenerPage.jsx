@@ -1,5 +1,9 @@
+import { PageContentLayout } from '../../ui'
+
 export const ShortenerPage = () => {
   return (
-    <div>ShortenerPage</div>
+    <PageContentLayout>
+        <h1>Shortify App</h1>
+    </PageContentLayout>
   )
 }
