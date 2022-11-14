@@ -4,9 +4,13 @@ import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 import { useFormik } from 'formik'
 import Box from '@mui/system/Box'
+import { useState } from 'react'
 import * as Yup from 'yup'
 
+import { shortenUrl } from '../../api'
+
 import {
+  UrlClipboard,
   buttonBoxContainer,
   itemsBoxContainer,
   boxContainer,
@@ -14,17 +18,26 @@ import {
 } from '../'
 
 const validations = Yup.object({
-  url: Yup.string().url('Invalid Link Page')
+  full_url: Yup.string().url('Invalid Link Page')
 })
 
 export const ShortenerForm = () => {
+  const [shortURL, setShortURL] = useState(null)
+
   const urlForm = useFormik({
     initialValues: {
-      url: ''
+      full_url: ''
     },
     validationSchema: validations,
     onSubmit: (values) => {
-
+      setShortURL(null)
+      shortenUrl(values.full_url).then(res => {
+        const { shortUrl, errorMessage, errors } = res
+        if (errors) urlForm.setStatus(JSON.parse(errors))
+        if (errorMessage) urlForm.setFieldValue('errorMessage', errorMessage)
+        if (shortUrl) setShortURL(shortUrl)
+        urlForm.setSubmitting(false)
+      })
     }
   })
 
@@ -32,7 +45,7 @@ export const ShortenerForm = () => {
     if (status && status[target.id]) urlForm.setStatus(target.id, null)
   }
 
-  const { touched, errors, status, values, handleChange, handleReset, isSubmitting } = urlForm
+  const { touched, errors, status, values, handleChange, isSubmitting } = urlForm
 
   return (
     <form onSubmit={ urlForm.handleSubmit }>
@@ -46,26 +59,27 @@ export const ShortenerForm = () => {
           </Box>
           <Box sx={{ gridArea: 'input' }}>
             <TextField
-                  required
-                  label='Page Link'
+                  label='Page Link *'
+                  size='small'
                   placeholder='https://www.facebook.com/'
                   fullWidth
-                  name='url'
-                  id='url'
-                  error={(touched.url && Boolean(errors.url)) || (status && Boolean(status.url))}
-                  helperText={ (touched.url && errors.url) || (status && status.url?.join(', '))}
+                  name='full_url'
+                  id='full_url'
+                  error={(touched.full_url && Boolean(errors.full_url)) || (status && Boolean(status.full_url))}
+                  helperText={ (touched.full_url && errors.full_url) || (status && status.full_url?.join(', '))}
                   onChange={ handleChange }
                   onFocus={ onFocusHandler }
-                  value={ values.url }/>
+                  value={ values.full_url }/>
           </Box>
           <Box sx={buttonBoxContainer}>
-            <Box sx={{ width: '100%' }}>
-              <Button disabled={ isSubmitting } onClick={ handleReset } type='submit' variant='contained' fullWidth>Shortify</Button>
+            <Box sx={{ width: '100%', height: '100%' }}>
+              <Button disabled={ isSubmitting } type='submit' variant='contained' fullWidth>Shortify</Button>
             </Box>
           </Box>
           <Box sx={{ gridArea: 'error' }} display={ values.errorMessage ? '' : 'none' } >
             <Alert severity='error' >{ values.errorMessage }</Alert>
           </Box>
+            {shortURL && <UrlClipboard shortURL={shortURL} />}
         </Box>
       </Box>
     </form>
