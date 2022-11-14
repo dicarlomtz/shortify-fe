@@ -7,6 +7,7 @@ import Box from '@mui/system/Box'
 import { useState } from 'react'
 import * as Yup from 'yup'
 
+import { API_SHORT_CODE_URL } from '../../constants'
 import { shortenUrl } from '../../api'
 
 import {
@@ -32,10 +33,10 @@ export const ShortenerForm = () => {
     onSubmit: (values) => {
       setShortURL(null)
       shortenUrl(values.full_url).then(res => {
-        const { shortUrl, errorMessage, errors } = res
-        if (errors) urlForm.setStatus(JSON.parse(errors))
+        const { shortCode, errorMessage, errors } = res
+        if (errors) urlForm.setStatus(errors)
         if (errorMessage) urlForm.setFieldValue('errorMessage', errorMessage)
-        if (shortUrl) setShortURL(shortUrl)
+        if (shortCode) setShortURL(API_SHORT_CODE_URL + shortCode)
         urlForm.setSubmitting(false)
       })
     }
