@@ -21,36 +21,13 @@ export const getTop = async () => {
   }
 }
 
-export const getShortUrl = async shortCode => {
-  try {
-    const res = await instance.get(`urls/${shortCode}`)
-    const { data } = res
-
-    return {
-      shortUrl: data,
-      errorMessage: null,
-      errors: null
-    }
-  } catch (err) {
-    const { response: res } = err
-    const errorMessage = res ? null : err.message
-    const errors = res ? res.data.errors : null
-
-    return {
-      shortUrl: null,
-      errorMessage,
-      errors
-    }
-  }
-}
-
 export const shortenUrl = async fullUrl => {
   try {
     const res = await instance.post('urls', { full_url: fullUrl })
     const { data } = res
 
     return {
-      shortUrl: data.short_url,
+      shortCode: data.short_code,
       errorMessage: null,
       errors: null
     }
@@ -60,7 +37,7 @@ export const shortenUrl = async fullUrl => {
     const errors = res ? res.data.errors : null
 
     return {
-      shortUrl: null,
+      shortCode: null,
       errorMessage,
       errors
     }
