@@ -1,12 +1,13 @@
 export const boxContainer = {
   width: '100%',
-  height: '140px',
+  height: '100%',
   '& > .MuiBox-root > .MuiBox-root': {
     p: 1,
     borderRadius: 2,
     fontSize: '0.875rem',
     fontWeight: '700'
-  }
+  },
+  p: 2
 }
 
 export const itemsBoxContainer = {
@@ -15,13 +16,8 @@ export const itemsBoxContainer = {
   gridTemplateRows: 'auto',
   gridTemplateAreas: `"title title title title"
                     "input input input button"
-                    "error error error error"`
-}
-
-export const titleStyles = {
-  fontWeight: 'regular',
-  fontSize: 'h3.fontSize',
-  textTransform: 'capitalize'
+                    "error error error error"
+                    "url url url url"`
 }
 
 export const buttonBoxContainer = {
