@@ -1,6 +1,6 @@
 # shortify-fe
 
-This project serves as a frontent implementations for a url shortener
+This project serves as a frontent implementations for an url shortener.
 This project can be used along this [backend implementation](https://github.com/dicarlomtz/shortify-be)
 
 ## Requirements
